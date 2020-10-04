@@ -34,8 +34,8 @@ void LcmToRosConvertor::LcmJointStateCallback(const lcm::ReceiveBuffer* rbuf,
   joint_state_msg.header.seq = seq_joint_state_;
   joint_state_msg.header.stamp = ros::Time::now();
   joint_state_msg.header.frame_id = "/minicheetah/joint_state";
-  std::vector<double> joint_position(msg->p, msg->p + sizeof(msg->p)/sizeof(msg->p[0]));
-  std::vector<double> joint_velocity(msg->v, msg->v + sizeof(msg->v)/sizeof(msg->v[0]));
+  std::vector<double> joint_position(msg->q, msg->q + sizeof(msg->q)/sizeof(msg->q[0]));
+  std::vector<double> joint_velocity(msg->qd, msg->qd + sizeof(msg->qd)/sizeof(msg->qd[0]));
   std::vector<double> joint_effort(msg->tau_est, msg->tau_est + sizeof(msg->tau_est)/sizeof(msg->tau_est[0]));
   joint_state_msg.position = joint_position;
   joint_state_msg.velocity = joint_velocity;
